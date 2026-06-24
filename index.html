@@ -692,7 +692,7 @@
         <div class="seg"><i></i>Сфера услуг</div>
       </div>
     </div>
-    <p class="cases-note">Кейсы приведены как иллюстрация типовых результатов — замените на ваши реальные данные перед публикацией.</p>
+
   </div>
 </section>
 
@@ -753,7 +753,7 @@
             <span class="msg"></span>
           </div>
           <button type="submit" class="btn btn-primary btn-arrow">Получить консультацию</button>
-          <p class="form-policy">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных согласно политике конфиденциальности.</p>
+          <p class="form-policy">Нажимая кнопку, вы соглашаетесь с <a href="#" onclick="openModal('privacy');return false;" style="color:var(--jade-deep);text-decoration:underline">политикой конфиденциальности</a>.</p>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="ok"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
@@ -791,7 +791,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 Finexa. Все права защищены.</span>
-      <span>Политика конфиденциальности · Договор оферты</span>
+      <span><a href="#" onclick="openModal('privacy');return false;" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Политика конфиденциальности</a> · <a href="#" onclick="openModal('terms');return false;" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Условия оказания услуг</a></span>
     </div>
   </div>
 </footer>
@@ -904,6 +904,7 @@
       var phoneSafe = '+' + phone.replace(/\D/g, '');
       fetch(LEAD_URL, {
         method: 'POST',
+        mode: 'no-cors',
         body: new URLSearchParams({
           name: name,
           phone: phoneSafe,
@@ -955,5 +956,131 @@
   }
 })();
 </script>
+
+<!-- MODALS: Privacy Policy & Terms -->
+<style>
+  .modal-overlay{position:fixed;inset:0;background:rgba(14,34,39,.7);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
+  .modal-overlay.open{display:flex}
+  .modal-box{background:#fff;border-radius:22px;max-width:760px;width:100%;padding:44px;position:relative;margin:auto}
+  .modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;border:none;background:var(--paper);cursor:pointer;font-size:20px;display:grid;place-items:center;color:var(--text-muted);transition:background .15s}
+  .modal-close:hover{background:var(--paper-2)}
+  .modal-box h2{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;margin-bottom:8px;color:var(--text)}
+  .modal-box .modal-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-muted);margin-bottom:28px;display:block}
+  .modal-box h3{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;margin:24px 0 8px;color:var(--text)}
+  .modal-box p{font-size:14.5px;color:var(--text-muted);line-height:1.7;margin-bottom:10px}
+  .modal-box ul{padding-left:20px;margin-bottom:10px}
+  .modal-box ul li{font-size:14.5px;color:var(--text-muted);line-height:1.7;margin-bottom:6px}
+  @media(max-width:600px){.modal-box{padding:28px 20px}}
+</style>
+
+<!-- Privacy Policy -->
+<div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-label="Политика конфиденциальности">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('privacy')" aria-label="Закрыть">×</button>
+    <h2>Политика конфиденциальности</h2>
+    <span class="modal-date">Дата вступления в силу: 24 июня 2026 г.</span>
+
+    <h3>1. Общие положения</h3>
+    <p>Настоящая политика конфиденциальности регулирует порядок обработки персональных данных пользователей сайта finexa.site (далее — Сайт), оказывающего услуги финансового сопровождения бизнеса.</p>
+    <p>Оператор персональных данных: Тупиков Артём Дмитриевич (далее — Оператор).</p>
+    <p>Контактные данные: ip_artemtupikov19@bk.ru, +7 916 472-65-80.</p>
+
+    <h3>2. Какие данные мы собираем</h3>
+    <p>При заполнении формы на Сайте мы собираем следующие данные:</p>
+    <ul>
+      <li>Имя</li>
+      <li>Номер телефона</li>
+      <li>Название компании</li>
+      <li>Комментарий (при наличии)</li>
+    </ul>
+
+    <h3>3. Цели обработки данных</h3>
+    <p>Собранные данные используются исключительно для:</p>
+    <ul>
+      <li>Связи с потенциальным клиентом для консультации</li>
+      <li>Обсуждения условий оказания услуг</li>
+    </ul>
+    <p>Данные не передаются третьим лицам, не используются в маркетинговых целях без согласия пользователя.</p>
+
+    <h3>4. Хранение данных</h3>
+    <p>Данные хранятся в защищённой Google Таблице, доступной только Оператору. Срок хранения — до момента исполнения договора или до получения запроса об удалении.</p>
+
+    <h3>5. Права пользователя</h3>
+    <p>Вы вправе в любой момент запросить удаление, изменение или предоставление своих персональных данных, направив запрос на email: ip_artemtupikov19@bk.ru.</p>
+
+    <h3>6. Согласие</h3>
+    <p>Нажимая кнопку «Получить консультацию», вы даёте согласие на обработку персональных данных в соответствии с настоящей политикой и Федеральным законом № 152-ФЗ «О персональных данных».</p>
+
+    <h3>7. Изменения политики</h3>
+    <p>Оператор вправе вносить изменения в настоящую политику. Актуальная версия всегда доступна на Сайте.</p>
+  </div>
+</div>
+
+<!-- Terms of Service -->
+<div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-label="Условия оказания услуг">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('terms')" aria-label="Закрыть">×</button>
+    <h2>Условия оказания услуг</h2>
+    <span class="modal-date">Дата вступления в силу: 24 июня 2026 г.</span>
+
+    <h3>1. Общие положения</h3>
+    <p>Настоящие условия регулируют отношения между Тупиковым Артёмом Дмитриевичем (далее — Исполнитель) и лицом, оставившим заявку на Сайте finexa.site (далее — Заказчик).</p>
+    <p>Контактные данные Исполнителя: ip_artemtupikov19@bk.ru, +7 916 472-65-80.</p>
+
+    <h3>2. Предмет</h3>
+    <p>Исполнитель оказывает услуги финансового сопровождения бизнеса: управленческий анализ P&L, Cash Flow, баланса, подготовку финансовых заключений и рекомендаций в рамках выбранного тарифа.</p>
+
+    <h3>3. Порядок оказания услуг</h3>
+    <ul>
+      <li>Заказчик оставляет заявку и получает консультацию</li>
+      <li>Стороны согласовывают тариф и условия</li>
+      <li>Заказчик передаёт финансовые данные</li>
+      <li>Исполнитель проводит анализ и предоставляет заключение</li>
+      <li>Стороны проводят созвон по итогам анализа</li>
+    </ul>
+
+    <h3>4. Стоимость услуг</h3>
+    <p>Стоимость определяется выбранным тарифом:</p>
+    <ul>
+      <li>«Финансовый контроль» — 25 000 ₽/месяц</li>
+      <li>«Финансовый директор» — 50 000 ₽/месяц</li>
+    </ul>
+    <p>Оплата производится на условиях, согласованных сторонами индивидуально.</p>
+
+    <h3>5. Конфиденциальность</h3>
+    <p>Исполнитель обязуется не разглашать финансовые данные Заказчика третьим лицам без его письменного согласия.</p>
+
+    <h3>6. Ответственность</h3>
+    <p>Исполнитель предоставляет аналитику и рекомендации на основе переданных данных. Окончательные управленческие решения принимаются Заказчиком самостоятельно. Исполнитель не несёт ответственности за результаты решений, принятых на основе рекомендаций.</p>
+
+    <h3>7. Отказ от услуг</h3>
+    <p>Заказчик вправе отказаться от услуг в любой момент, уведомив Исполнителя по email не менее чем за 5 рабочих дней до начала следующего расчётного периода.</p>
+
+    <h3>8. Разногласия</h3>
+    <p>Все споры решаются путём переговоров. При невозможности — в соответствии с законодательством Российской Федерации.</p>
+  </div>
+</div>
+
+<script>
+  function openModal(id){
+    var el = document.getElementById('modal-'+id);
+    if(el){ el.classList.add('open'); document.body.style.overflow='hidden'; el.focus(); }
+  }
+  function closeModal(id){
+    var el = document.getElementById('modal-'+id);
+    if(el){ el.classList.remove('open'); document.body.style.overflow=''; }
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){
+      ['privacy','terms'].forEach(function(id){ closeModal(id); });
+    }
+  });
+  document.querySelectorAll('.modal-overlay').forEach(function(el){
+    el.addEventListener('click', function(e){
+      if(e.target===el) closeModal(el.id.replace('modal-',''));
+    });
+  });
+</script>
+
 </body>
 </html>
