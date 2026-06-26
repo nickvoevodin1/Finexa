@@ -347,6 +347,28 @@
   .foot-col a:hover{color:var(--jade)}
   .foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:26px;font-size:13px}
 
+
+  /* EXPRESS OFFER */
+  .express{background:var(--ink);color:var(--text-on-ink);position:relative;overflow:hidden}
+  .express::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 85% 0%,rgba(21,192,138,.16),transparent 60%),radial-gradient(600px 400px at 5% 110%,rgba(239,166,60,.10),transparent 60%);pointer-events:none}
+  .express-card{position:relative;background:linear-gradient(180deg,#16353B,#102A2F);border:1px solid var(--line-on-ink);border-radius:26px;padding:48px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;box-shadow:var(--shadow-lg)}
+  @media(max-width:860px){.express-card{grid-template-columns:1fr;gap:34px;padding:34px}}
+  .express-card .ex-badge{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#06241A;background:var(--jade);padding:7px 14px;border-radius:999px;margin-bottom:20px;font-weight:600}
+  .express-card h2{font-size:clamp(26px,3.6vw,40px);margin-bottom:14px;line-height:1.08}
+  .express-card .ex-sub{color:var(--text-on-ink-muted);font-size:16px;margin-bottom:24px;max-width:440px}
+  .ex-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
+  .ex-list li{display:flex;gap:11px;font-size:15px;align-items:flex-start}
+  .ex-list li .check{background:var(--jade-soft);margin-top:2px}
+  .ex-side{background:rgba(255,255,255,.03);border:1px solid var(--line-on-ink);border-radius:20px;padding:32px;text-align:center}
+  .ex-price{font-family:'Bricolage Grotesque';font-weight:800;font-size:56px;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+  .ex-price .cur{color:var(--jade)}
+  .ex-price-lab{font-family:'IBM Plex Mono';font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-on-ink-muted);margin-bottom:24px}
+  .ex-report{font-size:14px;color:var(--text-on-ink-muted);line-height:1.6;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--line-on-ink)}
+  .ex-guarantee{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--text-on-ink);text-align:left;margin-bottom:24px}
+  .ex-guarantee .ic{width:34px;height:34px;border-radius:9px;background:var(--jade-soft);display:grid;place-items:center;flex:none}
+  .ex-guarantee .ic svg{width:18px;height:18px;stroke:var(--jade);fill:none;stroke-width:2}
+  .ex-side .btn{width:100%}
+
   /* reveal */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
@@ -391,6 +413,7 @@
           <div class="t"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><b>Анализ от финансовых экспертов</b></div>
           <div class="t"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><b>Понятные отчёты</b></div>
           <div class="t"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><b>Решения на основе цифр</b></div>
+          <div class="t"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span><b>Работаем по договору и NDA</b></div>
         </div>
       </div>
 
@@ -540,6 +563,35 @@
         <div class="step reveal"><div class="num">3</div><div><h3>Заключение</h3><p>Готовим письменное заключение с выводами.</p></div></div>
         <div class="step reveal"><div class="num">4</div><div><h3>Созвон</h3><p>Обсуждаем результаты и рекомендации голосом.</p></div></div>
         <div class="step reveal"><div class="num">5</div><div><h3>Итоговый отчёт</h3><p>Получаете готовый отчёт за период.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPRESS OFFER -->
+<section class="section express" id="express">
+  <div class="wrap">
+    <div class="express-card reveal">
+      <div class="ex-main">
+        <span class="ex-badge">Старт за 990 ₽</span>
+        <h2>Экспресс-анализ финансов вашего бизнеса</h2>
+        <p class="ex-sub">Проведём разбор финансовых показателей за последнюю неделю — и покажем реальную картину уже на старте.</p>
+        <ul class="ex-list">
+          <li><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Сколько бизнес зарабатывает на самом деле</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Где компания теряет деньги</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Какие финансовые риски требуют внимания</li>
+          <li><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Какие возможности для роста прибыли уже есть</li>
+        </ul>
+      </div>
+      <div class="ex-side">
+        <div class="ex-price"><span class="cur">990</span> ₽</div>
+        <div class="ex-price-lab">за полный анализ</div>
+        <p class="ex-report">Вы получите подробный аналитический отчёт с понятными выводами и практическими рекомендациями, которые можно применить сразу.</p>
+        <div class="ex-guarantee">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <span>Если не увидите ценности — вернём деньги без лишних вопросов.</span>
+        </div>
+        <button type="button" class="btn btn-primary btn-arrow" onclick="orderExpress()">Заказать за 990 ₽</button>
       </div>
     </div>
   </div>
@@ -725,6 +777,8 @@
           <div class="g"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Ответим в течение рабочего дня</div>
           <div class="g"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Без навязывания и продаж</div>
           <div class="g"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Конфиденциальность данных гарантирована</div>
+          <div class="g"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Работаем по договору</div>
+          <div class="g"><span class="check"><svg viewBox="0 0 24 24" stroke="#15C08A" fill="none" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Подписываем NDA о неразглашении</div>
         </div>
       </div>
 
@@ -784,8 +838,8 @@
         <div class="foot-col">
           <h4>Контакты</h4>
           <a href="#final">Оставить заявку</a>
-          <a href="mailto:ip_artemtupikov19@bk.ru">ip_artemtupikov19@bk.ru</a>
-          <a href="tel:+79164726580">+7 (916) 472-65-80</a>
+          <a href="mailto:hello@finexa.ru">hello@finexa.ru</a>
+          <a href="tel:+70000000000">+7 (000) 000-00-00</a>
         </div>
       </div>
     </div>
@@ -1080,6 +1134,16 @@
       if(e.target===el) closeModal(el.id.replace('modal-',''));
     });
   });
+
+  // Express order: scroll to form, prefill, focus
+  function orderExpress(){
+    var c = document.getElementById('comment');
+    if(c && !c.value) c.value = 'Хочу заказать экспресс-анализ за 990 ₽';
+    var final = document.getElementById('final');
+    if(final) final.scrollIntoView({behavior:'smooth'});
+    setTimeout(function(){ var n = document.getElementById('name'); if(n) n.focus(); }, 600);
+  }
+  window.orderExpress = orderExpress;
 </script>
 
 </body>
