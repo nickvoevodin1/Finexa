@@ -277,10 +277,10 @@
 
       <!-- Variant 1 -->
       <div class="vcard feat reveal">
-        <span class="v-badge">Максимум вдолгую</span>
+        <span class="v-badge">Вдолгую</span>
         <span class="v-tag">Вариант 1 · Рекуррентный доход</span>
         <h3>Доход с каждого месяца клиента</h3>
-        <p class="v-desc">Вознаграждение начисляется со второго месяца оплаты клиента — и дальше каждый месяц, пока он остаётся с Finexa. Чем дольше клиент с нами, тем больше вы зарабатываете.</p>
+        <p class="v-desc">Вознаграждение начисляется во второй месяц оплаты клиента. Если вы уверены, что он останется с нами - то с этим вариантом вы сможете заработать кратно больше.</p>
         <div class="v-rows">
           <div class="v-row">
             <div class="v-row-top">
@@ -290,7 +290,7 @@
             <div class="v-pay">
               <span class="v-from">25 000 ₽</span>
               <span class="v-arrow">→</span>
-              <span class="v-to">20 000 ₽<span class="u"> / мес</span></span>
+              <span class="v-to">20 000 ₽<span class="u"> разово</span></span>
             </div>
           </div>
           <div class="v-row">
@@ -301,7 +301,7 @@
             <div class="v-pay">
               <span class="v-from">50 000 ₽</span>
               <span class="v-arrow">→</span>
-              <span class="v-to">35 000 ₽<span class="u"> / мес</span></span>
+              <span class="v-to">35 000 ₽<span class="u"> разово</span></span>
             </div>
           </div>
         </div>
@@ -364,8 +364,8 @@
         <div class="calc-field">
           <label>Вариант вознаграждения</label>
           <div class="seg" id="segVariant">
-            <button class="active" data-v="1">Вариант 1 · ежемесячно</button>
-            <button data-v="2">Вариант 2 · разово</button>
+            <button class="active" data-v="1">Вариант 1 · во 2 месяц</button>
+            <button data-v="2">Вариант 2 · в 1 месяц</button>
           </div>
         </div>
         <div class="calc-field">
@@ -383,9 +383,9 @@
           </div>
         </div>
         <div class="calc-result">
-          <div class="rl" id="resLabel">Ваш доход в месяц</div>
+          <div class="rl" id="resLabel">Ваш доход</div>
           <div class="rv" id="resVal">60 000 ₽</div>
-          <div class="rs" id="resSub">3 клиента × 20 000 ₽ ежемесячно</div>
+          <div class="rs" id="resSub">3 клиента × 20 000 ₽</div>
         </div>
       </div>
     </div>
@@ -491,8 +491,8 @@
 
   // Calculator
   var rates = {
-    '1': { control: 20000, director: 35000, period: 'ежемесячно', label: 'Ваш доход в месяц' },
-    '2': { control: 5000,  director: 10000, period: 'разово',      label: 'Ваша выплата' }
+    '1': { control: 20000, director: 35000, period: 'разово', label: 'Ваш доход во второй месяц' },
+    '2': { control: 5000,  director: 10000, period: 'разово', label: 'Ваш доход в первый месяц' }
   };
   var state = { v: '1', t: 'control', cnt: 3 };
 
