@@ -101,14 +101,29 @@
     padding:18px 0;
   }
   header.scrolled{background:rgba(238,242,240,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:21px;letter-spacing:-.03em}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:21px;letter-spacing:-.03em;color:var(--text-on-ink);transition:color .3s ease}
+  header.scrolled .logo{color:var(--text)}
   .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 4px var(--jade-soft)}
-  .nav-links{display:flex;gap:30px;align-items:center}
-  .nav-links a{font-size:14.5px;color:var(--text-muted);font-weight:500;transition:color .15s}
-  .nav-links a:hover{color:var(--text)}
-  .nav-cta{padding:11px 20px;font-size:14px}
-  @media(max-width:900px){.nav-links a:not(.nav-cta){display:none}}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:14.5px;color:rgba(234,241,238,.85);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:#fff}
+  header.scrolled .nav-links a{color:var(--text-muted)}
+  header.scrolled .nav-links a:hover{color:var(--text)}
+  .nav-phone{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;white-space:nowrap}
+  .nav-cta{padding:11px 20px;font-size:14px;color:#fff}
+  .nav-links a.nav-cta:hover{color:#fff}
+  @media(max-width:900px){
+    .nav{flex-wrap:wrap;gap:10px 18px}
+    .nav-links{gap:16px 18px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{font-size:13.5px}
+    .nav-phone{font-size:13px}
+    .nav-cta{padding:9px 16px;font-size:13px}
+  }
+  @media(max-width:460px){
+    .nav-phone{display:none}
+    .nav-links{gap:14px}
+  }
 
   /* HERO */
   .hero{
@@ -388,9 +403,9 @@
     <a href="#top" class="logo"><span class="dot"></span>Finexa</a>
     <nav class="nav-links">
       <a href="#services">Услуги</a>
-      <a href="#process">Как работаем</a>
       <a href="#tariffs">Тарифы</a>
-      <a href="#cases">Кейсы</a>
+      <a href="partner.html">Партнёрам</a>
+      <a href="tel:+79164726580" class="nav-phone">+7 916 472-65-80</a>
       <a href="#final" class="btn btn-primary nav-cta">Получить консультацию</a>
     </nav>
   </div>
@@ -834,12 +849,13 @@
           <a href="#process">Как работаем</a>
           <a href="#tariffs">Тарифы</a>
           <a href="#cases">Кейсы</a>
+          <a href="partner.html">Партнёрам</a>
         </div>
         <div class="foot-col">
           <h4>Контакты</h4>
           <a href="#final">Оставить заявку</a>
-          <a href="mailto:hello@finexa.ru">hello@finexa.ru</a>
-          <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+          <a href="mailto:ip_artemtupikov19@bk.ru">ip_artemtupikov19@bk.ru</a>
+          <a href="tel:+79164726580">+7 916 472-65-80</a>
         </div>
       </div>
     </div>
