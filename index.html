@@ -101,11 +101,11 @@
     padding:18px 0;
   }
   header.scrolled{background:rgba(238,242,240,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:21px;letter-spacing:-.03em;color:var(--text-on-ink);transition:color .3s ease}
   header.scrolled .logo{color:var(--text)}
   .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 4px var(--jade-soft)}
-  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links{display:flex;gap:26px;align-items:center}
   .nav-links a{font-size:14.5px;color:rgba(234,241,238,.85);font-weight:500;transition:color .15s}
   .nav-links a:hover{color:#fff}
   header.scrolled .nav-links a{color:var(--text-muted)}
@@ -113,16 +113,28 @@
   .nav-phone{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;white-space:nowrap}
   .nav-cta{padding:11px 20px;font-size:14px;color:#fff}
   .nav-links a.nav-cta:hover{color:#fff}
+  .nav-cta .cta-short{display:none}
   @media(max-width:900px){
-    .nav{flex-wrap:wrap;gap:10px 18px}
-    .nav-links{gap:16px 18px;flex-wrap:wrap;justify-content:flex-end}
+    .nav{gap:12px}
+    .nav-links{gap:16px}
     .nav-links a{font-size:13.5px}
-    .nav-phone{font-size:13px}
-    .nav-cta{padding:9px 16px;font-size:13px}
+    .nav-cta{padding:9px 15px;font-size:13px}
   }
-  @media(max-width:460px){
+  @media(max-width:760px){
     .nav-phone{display:none}
-    .nav-links{gap:14px}
+  }
+  @media(max-width:560px){
+    .logo{font-size:18px}
+    .nav-links{gap:12px}
+    .nav-links a{font-size:12px}
+    .nav-cta{padding:8px 13px;font-size:12px}
+    .nav-cta .cta-full{display:none}
+    .nav-cta .cta-short{display:inline}
+  }
+  @media(max-width:380px){
+    .nav-links{gap:9px}
+    .nav-links a{font-size:11.5px}
+    .nav-cta{padding:7px 11px;font-size:11.5px}
   }
 
   /* HERO */
@@ -394,6 +406,25 @@
     .ticker-track{animation:none}
   }
   :focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:4px}
+  /* Mobile: compact top row + floating CTA (Telegram-style) */
+  .mobile-cta{display:none}
+  @media(max-width:640px){
+    header{padding:12px 0}
+    header.scrolled{padding:10px 0}
+    .nav-phone{display:none}
+    .nav-cta{display:none}
+    .nav-links{gap:14px}
+    .nav-links a{font-size:12.5px}
+    .logo{font-size:17px}
+    .mobile-cta{display:flex;align-items:center;justify-content:center;position:fixed;left:16px;right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:200;padding:15px 24px;border-radius:999px;background:var(--jade-deep);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;box-shadow:0 12px 30px -6px rgba(14,158,114,.55),0 4px 14px rgba(0,0,0,.18);transition:transform .3s ease,opacity .3s ease}
+    .mobile-cta::after{content:"\2192";font-family:'IBM Plex Mono',monospace;margin-left:9px}
+    .mobile-cta.hide{transform:translateY(160%);opacity:0;pointer-events:none}
+  }
+  @media(max-width:360px){
+    .nav-links{gap:11px}
+    .nav-links a{font-size:11.5px}
+    .logo{font-size:16px}
+  }
 </style>
 </head>
 <body>
@@ -406,7 +437,7 @@
       <a href="#tariffs">Тарифы</a>
       <a href="partner.html">Партнёрам</a>
       <a href="tel:+79164726580" class="nav-phone">+7 916 472-65-80</a>
-      <a href="#final" class="btn btn-primary nav-cta">Получить консультацию</a>
+      <a href="#final" class="btn btn-primary nav-cta"><span class="cta-full">Получить консультацию</span><span class="cta-short">Заявка</span></a>
     </nav>
   </div>
 </header>
@@ -1160,6 +1191,19 @@
     setTimeout(function(){ var n = document.getElementById('name'); if(n) n.focus(); }, 600);
   }
   window.orderExpress = orderExpress;
+</script>
+
+<a href="#final" class="mobile-cta">Получить консультацию</a>
+<script>
+(function(){
+  var mcta=document.querySelector('.mobile-cta');
+  var target=document.getElementById('final')||document.getElementById('join');
+  if(mcta && target && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ mcta.classList.toggle('hide', e.isIntersecting); });
+    },{threshold:.15}).observe(target);
+  }
+})();
 </script>
 
 </body>
