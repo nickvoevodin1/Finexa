@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Finexa — Партнёрская программа. Зарабатывайте вместе с нами</title>
-<meta name="description" content="Партнёрская программа Finexa: приводите клиентов на финансовое сопровождение бизнеса и получайте вознаграждение. Два варианта выплат — рекуррентные платежи или фиксированная выплата с первой оплаты.">
+<meta name="description" content="Партнёрская программа Finexa: приводите клиентов на финансовое сопровождение бизнеса и получайте вознаграждение. Два варианта разовой выплаты — со второго месяца клиента или сразу с первой оплаты.">
 <meta name="theme-color" content="#0E2227">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Finexa — Партнёрская программа">
@@ -60,14 +60,41 @@
   /* Header */
   header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,box-shadow .3s,backdrop-filter .3s,padding .3s;padding:18px 0}
   header.scrolled{background:rgba(238,242,240,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line);padding:12px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:21px;letter-spacing:-.03em}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:800;font-size:21px;letter-spacing:-.03em;color:var(--text-on-ink);transition:color .3s ease}
+  header.scrolled .logo{color:var(--text)}
   .logo .dot{width:11px;height:11px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 4px var(--jade-soft)}
-  .nav-links{display:flex;gap:30px;align-items:center}
-  .nav-links a{font-size:14.5px;color:var(--text-muted);font-weight:500;transition:color .15s}
-  .nav-links a:hover{color:var(--text)}
-  .nav-cta{padding:11px 20px;font-size:14px}
-  @media(max-width:900px){.nav-links a:not(.nav-cta){display:none}}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:14.5px;color:rgba(234,241,238,.85);font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:#fff}
+  header.scrolled .nav-links a{color:var(--text-muted)}
+  header.scrolled .nav-links a:hover{color:var(--text)}
+  .nav-phone{font-family:'IBM Plex Mono';font-weight:500;font-size:14px;white-space:nowrap}
+  .nav-cta{padding:11px 20px;font-size:14px;color:#fff}
+  .nav-links a.nav-cta:hover{color:#fff}
+  .nav-cta .cta-short{display:none}
+  @media(max-width:900px){
+    .nav{gap:12px}
+    .nav-links{gap:16px}
+    .nav-links a{font-size:13.5px}
+    .nav-cta{padding:9px 15px;font-size:13px}
+  }
+  @media(max-width:760px){
+    .nav-phone{display:none}
+  }
+  @media(max-width:560px){
+    .logo{font-size:18px}
+    .nav-links{gap:12px}
+    .nav-links a{font-size:12px}
+    .nav-cta{padding:8px 13px;font-size:12px}
+    .nav-cta .cta-full{display:none}
+    .nav-cta .cta-short{display:inline}
+  }
+  @media(max-width:380px){
+    .nav-links{gap:9px}
+    .nav-links a{font-size:11.5px}
+    .nav-cta{padding:7px 11px;font-size:11.5px}
+  }
 
   /* HERO */
   .hero{background:var(--ink);color:var(--text-on-ink);padding:150px 0 96px;position:relative;overflow:hidden}
@@ -200,6 +227,25 @@
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
   :focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:4px}
+  /* Mobile: compact top row + floating CTA (Telegram-style) */
+  .mobile-cta{display:none}
+  @media(max-width:640px){
+    header{padding:12px 0}
+    header.scrolled{padding:10px 0}
+    .nav-phone{display:none}
+    .nav-cta{display:none}
+    .nav-links{gap:14px}
+    .nav-links a{font-size:12.5px}
+    .logo{font-size:17px}
+    .mobile-cta{display:flex;align-items:center;justify-content:center;position:fixed;left:16px;right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:200;padding:15px 24px;border-radius:999px;background:var(--jade-deep);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:15px;box-shadow:0 12px 30px -6px rgba(14,158,114,.55),0 4px 14px rgba(0,0,0,.18);transition:transform .3s ease,opacity .3s ease}
+    .mobile-cta::after{content:"\2192";font-family:'IBM Plex Mono',monospace;margin-left:9px}
+    .mobile-cta.hide{transform:translateY(160%);opacity:0;pointer-events:none}
+  }
+  @media(max-width:360px){
+    .nav-links{gap:11px}
+    .nav-links a{font-size:11.5px}
+    .logo{font-size:16px}
+  }
 </style>
 </head>
 <body>
@@ -210,8 +256,9 @@
     <nav class="nav-links">
       <a href="index.html#services">Услуги</a>
       <a href="index.html#tariffs">Тарифы</a>
-      <a href="index.html">На главную</a>
-      <a href="#join" class="btn btn-primary nav-cta">Стать партнёром</a>
+      <a href="partner.html">Партнёрам</a>
+      <a href="tel:+79164726580" class="nav-phone">+7 916 472-65-80</a>
+      <a href="index.html#final" class="btn btn-primary nav-cta"><span class="cta-full">Получить консультацию</span><span class="cta-short">Заявка</span></a>
     </nav>
   </div>
 </header>
@@ -231,11 +278,11 @@
       <div class="hero-stats">
         <div class="hstat">
           <div class="big">2</div>
-          <p><b>варианта вознаграждения</b> — рекуррентные выплаты или фикс с первой оплаты</p>
+          <p><b>варианта разовой выплаты</b> — со 2-го месяца клиента или сразу с первой оплаты</p>
         </div>
         <div class="hstat">
           <div class="big">∞</div>
-          <p><b>без потолка</b> по количеству клиентов и сумме заработка</p>
+          <p><b>без потолка</b> по количеству клиентов — больше клиентов, больше выплат</p>
         </div>
       </div>
     </div>
@@ -271,16 +318,16 @@
     <div class="sec-head reveal" style="text-align:center;margin:0 auto 50px">
       <span class="eyebrow" style="justify-content:center">Условия партнёрства</span>
       <h2>Два варианта вознаграждения</h2>
-      <p style="margin:0 auto">Выбирайте подходящую модель: стабильный доход вдолгую или быстрая выплата сразу с первой оплаты клиента.</p>
+      <p style="margin:0 auto">Обе модели — разовая выплата за каждого клиента. Разница в том, когда вы её получаете: со второго месяца по повышенной ставке или сразу с первой оплаты.</p>
     </div>
     <div class="variants-grid">
 
       <!-- Variant 1 -->
       <div class="vcard feat reveal">
-        <span class="v-badge">Вдолгую</span>
-        <span class="v-tag">Вариант 1 · Рекуррентный доход</span>
-        <h3>Доход с каждого месяца клиента</h3>
-        <p class="v-desc">Вознаграждение начисляется во второй месяц оплаты клиента. Если вы уверены, что он останется с нами - то с этим вариантом вы сможете заработать кратно больше.</p>
+        <span class="v-badge">Больше за клиента</span>
+        <span class="v-tag">Вариант 1 · Оплата со 2-го месяца</span>
+        <h3>Оплата со второго месяца</h3>
+        <p class="v-desc">Разовое вознаграждение за клиента, который продлил сопровождение на второй месяц. Повышенная ставка — за счёт высокой конверсии в продление.</p>
         <div class="v-rows">
           <div class="v-row">
             <div class="v-row-top">
@@ -307,7 +354,7 @@
         </div>
         <div class="v-note">
           <svg viewBox="0 0 24 24"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
-          Выплата со второго месяца. Высокая конверсия в продление делает доход предсказуемым и почти пассивным.
+          Разовая выплата со второго месяца оплаты клиента. Высокая конверсия в продление делает доход предсказуемым.
         </div>
       </div>
 
@@ -316,7 +363,7 @@
         <span class="v-guarantee">Гарантия 100%</span>
         <span class="v-tag">Вариант 2 · Выплата сразу</span>
         <h3>20% с первой оплаты клиента</h3>
-        <p class="v-desc">Получаете фиксированную выплату 20% от чека сразу с первой оплаты клиента — без ожидания продления. Быстро, понятно, с гарантией выплаты.</p>
+        <p class="v-desc">Разовая выплата 20% от чека сразу с первой оплаты клиента — без ожидания продления. Быстро, понятно, с гарантией 100%.</p>
         <div class="v-rows">
           <div class="v-row">
             <div class="v-row-top">
@@ -358,14 +405,14 @@
       <div class="calc-text reveal">
         <span class="eyebrow">Калькулятор</span>
         <h2>Посчитайте свой доход</h2>
-        <p>Выберите вариант, тариф и количество клиентов — и увидите, сколько сможете заработать с Finexa.</p>
+        <p>Выберите вариант, тариф и количество клиентов — и увидите свою разовую выплату с Finexa.</p>
       </div>
       <div class="calc-box reveal">
         <div class="calc-field">
           <label>Вариант вознаграждения</label>
           <div class="seg" id="segVariant">
-            <button class="active" data-v="1">Вариант 1 · во 2 месяц</button>
-            <button data-v="2">Вариант 2 · в 1 месяц</button>
+            <button class="active" data-v="1">Вариант 1 · со 2-го мес</button>
+            <button data-v="2">Вариант 2 · с 1-й оплаты</button>
           </div>
         </div>
         <div class="calc-field">
@@ -383,9 +430,9 @@
           </div>
         </div>
         <div class="calc-result">
-          <div class="rl" id="resLabel">Ваш доход</div>
+          <div class="rl" id="resLabel">Ваша выплата</div>
           <div class="rv" id="resVal">60 000 ₽</div>
-          <div class="rs" id="resSub">3 клиента × 20 000 ₽</div>
+          <div class="rs" id="resSub">3 клиента × 20 000 ₽ разово</div>
         </div>
       </div>
     </div>
@@ -404,7 +451,7 @@
       <div class="pstep reveal"><div class="n">1</div><h3>Оставляете заявку</h3><p>Регистрируетесь в партнёрской программе и получаете персональные условия.</p></div>
       <div class="pstep reveal"><div class="n">2</div><h3>Рекомендуете Finexa</h3><p>Приводите клиента — собственника бизнеса, которому нужен контроль над финансами.</p></div>
       <div class="pstep reveal"><div class="n">3</div><h3>Мы делаем работу</h3><p>Клиент подключается на тариф, мы ведём всё финансовое сопровождение.</p></div>
-      <div class="pstep reveal"><div class="n">4</div><h3>Получаете выплаты</h3><p>По выбранному варианту — ежемесячно или сразу с первой оплаты клиента.</p></div>
+      <div class="pstep reveal"><div class="n">4</div><h3>Получаете выплаты</h3><p>Разовая выплата — со второго месяца клиента или сразу с первой оплаты, по выбранному варианту.</p></div>
     </div>
   </div>
 </section>
@@ -417,11 +464,11 @@
       <h2>Частые вопросы</h2>
     </div>
     <div class="faq-wrap">
-      <details class="faq-item reveal"><summary>Чем отличаются два варианта?<span class="pm"></span></summary><div class="ans">Вариант 1 — рекуррентный: вы получаете выплату со второго месяца оплаты клиента и дальше каждый месяц, пока он с нами (20 000 ₽ за тариф «Контроль» и 35 000 ₽ за «Директор»). Вариант 2 — разовый: 20% от чека сразу с первой оплаты (5 000 ₽ и 10 000 ₽ соответственно) с гарантией выплаты 100%.</div></details>
-      <details class="faq-item reveal"><summary>Какой вариант выгоднее?<span class="pm"></span></summary><div class="ans">Зависит от вашей цели. Если важен стабильный доход вдолгую и вы приводите клиентов, которые останутся надолго — выгоднее Вариант 1: уже за 2–3 месяца он обгоняет разовую выплату. Если нужен быстрый результат сразу — Вариант 2 даёт деньги с первой оплаты.</div></details>
-      <details class="faq-item reveal"><summary>Что означает конверсия 94% и 82%?<span class="pm"></span></summary><div class="ans">Это доля клиентов, которые продлевают сопровождение на второй месяц. Высокая конверсия означает, что в Варианте 1 риск «клиент уйдёт после первого месяца» минимален — большинство остаётся, и вы продолжаете получать выплаты.</div></details>
+      <details class="faq-item reveal"><summary>Чем отличаются два варианта?<span class="pm"></span></summary><div class="ans">Оба варианта — разовая выплата за каждого клиента. Вариант 1: выплата со второго месяца оплаты клиента, по повышенной ставке (20 000 ₽ за тариф «Контроль» и 35 000 ₽ за «Директор»). Вариант 2: 20% от чека сразу с первой оплаты (5 000 ₽ и 10 000 ₽ соответственно) с гарантией 100%.</div></details>
+      <details class="faq-item reveal"><summary>Какой вариант выгоднее?<span class="pm"></span></summary><div class="ans">Зависит от вашей цели. Вариант 1 даёт больше за клиента (20 000 / 35 000 ₽), но выплата приходит со второго месяца — когда клиент продлевает. Вариант 2 — меньше по сумме, зато деньги сразу с первой оплаты и с гарантией 100%.</div></details>
+      <details class="faq-item reveal"><summary>Что означает конверсия 94% и 82%?<span class="pm"></span></summary><div class="ans">Это доля клиентов, которые продлевают сопровождение на второй месяц. Высокая конверсия означает, что в Варианте 1 риск «клиент уйдёт после первого месяца» минимален — почти все доходят до выплаты.</div></details>
       <details class="faq-item reveal"><summary>Есть ли ограничение по числу клиентов?<span class="pm"></span></summary><div class="ans">Нет. Потолка по количеству клиентов и сумме заработка не существует. Чем больше клиентов вы приводите, тем больше зарабатываете.</div></details>
-      <details class="faq-item reveal"><summary>Когда приходят выплаты?<span class="pm"></span></summary><div class="ans">В Варианте 2 — после первой оплаты клиента. В Варианте 1 — начиная со второго месяца и далее ежемесячно, пока клиент остаётся с Finexa. Точный порядок и реквизиты согласуем при подключении к программе.</div></details>
+      <details class="faq-item reveal"><summary>Когда приходят выплаты?<span class="pm"></span></summary><div class="ans">В Варианте 2 — после первой оплаты клиента. В Варианте 1 — после того, как клиент оплатил второй месяц. Точный порядок и реквизиты согласуем при подключении к программе.</div></details>
     </div>
   </div>
 </section>
@@ -491,8 +538,8 @@
 
   // Calculator
   var rates = {
-    '1': { control: 20000, director: 35000, period: 'разово', label: 'Ваш доход во второй месяц' },
-    '2': { control: 5000,  director: 10000, period: 'разово', label: 'Ваш доход в первый месяц' }
+    '1': { control: 20000, director: 35000, period: 'разово', label: 'Ваша выплата' },
+    '2': { control: 5000,  director: 10000, period: 'разово', label: 'Ваша выплата' }
   };
   var state = { v: '1', t: 'control', cnt: 3 };
 
@@ -534,5 +581,18 @@
   update();
 })();
 </script>
+<a href="index.html#final" class="mobile-cta">Получить консультацию</a>
+<script>
+(function(){
+  var mcta=document.querySelector('.mobile-cta');
+  var target=document.getElementById('final')||document.getElementById('join');
+  if(mcta && target && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ mcta.classList.toggle('hide', e.isIntersecting); });
+    },{threshold:.15}).observe(target);
+  }
+})();
+</script>
+
 </body>
 </html>
